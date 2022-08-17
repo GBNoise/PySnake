@@ -61,6 +61,7 @@ class Snake:
             if snake_head == i:
                 # snake hits its body and dies
                 self.fruits_eaten = 0
+                self.current_direction = 'RIGHT'
                 self.snake_parts = [(0, 0), (0, 0), (0, 0), (self.GRID_SIZE, 0)]
 
             # x boundaries

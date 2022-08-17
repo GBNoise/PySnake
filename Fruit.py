@@ -2,8 +2,8 @@ import pygame
 from random import randint
 
 class Fruit:
-    def __init__(self,snake = None, screen = None, size = 30, xlines = None, ylines = None):
-        if not snake or not screen or not xlines or not ylines:
+    def __init__(self,snake = None, screen = None, size = 30, xlines = None, ylines = None, hud=None):
+        if not snake or not screen or not xlines or not ylines or not hud:
             raise ValueError('props cannot be null')
 
         self.snake = snake
@@ -13,6 +13,7 @@ class Fruit:
         self.YLINES = ylines
         self.is_fruit_spawned = False
         self.fruit_pos = None
+        self.hud = hud
 
 
     def draw_fruit(self):
@@ -26,7 +27,8 @@ class Fruit:
             self.snake.snake_parts.insert(0, self.snake.snake_parts[0])
             self.fruit_pos = None
             self.snake.fruits_eaten += 1
-            print('Puntuacion: ' + str(self.snake.fruits_eaten))
+            self.hud.score = self.snake.fruits_eaten
+            self.hud.update_score()
 
         if self.fruit_pos is None:
             return

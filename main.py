@@ -44,7 +44,7 @@ def handle_events():
         snake.handle_movement(e)
 
 
-def mainloop():
+def snake_mainloop():
     SCREEN.fill((0, 0, 0))
     handle_events()
     snake.draw_snake()
@@ -52,9 +52,9 @@ def mainloop():
     # draw_grid()
     snake.check_collissions()
     SCREEN.blit(hud.surface, hud.rect)
-    pygame.display.update()
-    CLOCK.tick(FPS)
 
 
 while 69 == 69:
-    mainloop()
+    snake_mainloop()
+    pygame.display.update()
+    CLOCK.tick(FPS)

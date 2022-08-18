@@ -36,17 +36,15 @@ class Snake:
                 last_x = self.snake_parts[-1][0]
                 last_y = self.snake_parts[-1][1]
 
-                if self.current_direction == 'RIGHT' and is_last:
-                    self.snake_parts[i] = (last_x + self.GRID_SIZE, last_y)
-                    break
-                elif self.current_direction == 'DOWN' and is_last:
-                    self.snake_parts[i] = (last_x, last_y + self.GRID_SIZE)
-                    break
-                elif self.current_direction == 'UP' and is_last:
-                    self.snake_parts[i] = (last_x, last_y - self.GRID_SIZE)
-                    break
-                elif self.current_direction == 'LEFT' and is_last:
-                    self.snake_parts[i] = (last_x - self.GRID_SIZE, last_y)
+                if is_last:
+                    if self.current_direction == 'RIGHT':
+                        self.snake_parts[i] = (last_x + self.GRID_SIZE, last_y)
+                    elif self.current_direction == 'DOWN' and is_last:
+                        self.snake_parts[i] = (last_x, last_y + self.GRID_SIZE)
+                    elif self.current_direction == 'UP' and is_last:
+                        self.snake_parts[i] = (last_x, last_y - self.GRID_SIZE)
+                    elif self.current_direction == 'LEFT' and is_last:
+                        self.snake_parts[i] = (last_x - self.GRID_SIZE, last_y)
                     break
 
                 self.snake_parts[i] = self.snake_parts[i + 1]
